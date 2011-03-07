@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, WokeUpTwitActivity!</string>
+	<string name="app_name">WokeUpTwit</string>
+	<string name="share_msg">select wokeup tweet app</string>
+	<string name="WokeUpTags"> #wokeup</string>
+	<string name="WokeUpMsg">Just</string>
+	<string name="PrefTitle">Settings</string>
+	<string name="EditMsgTitle">Tweet message format</string>
+	<string name="EditTagTitle">Tweet tags</string>
+	<string name="WOKEUP_MSG_KEY">WOKEUP_MSG_KEY</string>
+	<string name="WOKEUP_TAG_KEY">WOKEUP_TAG_KEY</string>
+</resources>
