@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World, WokeUpTwitActivity!</string>
+	<string name="hello">WokeUpTwit</string>
 	<string name="app_name">WokeUpTwit</string>
-	<string name="share_msg">select wokeup tweet app</string>
-	<string name="WokeUpTags"> #wokeup</string>
-	<string name="WokeUpMsg">Just</string>
+	<string name="share_msg">select woke up tweet app</string>
+	<string name="WokeUpMsg">Just #wokeup</string>
 	<string name="PrefTitle">Settings</string>
 	<string name="EditMsgTitle">Tweet message format</string>
-	<string name="EditTagTitle">Tweet tags</string>
-	<string name="WOKEUP_MSG_KEY">WOKEUP_MSG_KEY</string>
-	<string name="WOKEUP_TAG_KEY">WOKEUP_TAG_KEY</string>
+	<string name="EditMsgSummary">summary</string>
+	<string name="ResetSettingTitle">Reset the settings</string>
+	<string name="ResetSettingSummary">Reset the settings if you want</string>
+	<string name="ResetMsg">Reset the settings</string>
+	<string name="CannotConvertMsg">Cannot convert your message. Please correct your message format</string>
+	
 </resources>

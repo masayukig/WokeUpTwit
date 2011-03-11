@@ -1,6 +1,5 @@
 package org.orzlabs.android.wokeup;
 
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,21 +50,33 @@ public class WokeUpTwitActivity extends Activity {
 		finish();
 	}
 
-	private String getWokeupContent(String recv) {
+	private String getWokeupContent(final String recv) {
 		GregorianCalendar calendar = new GregorianCalendar();
-		int hour = calendar.get(Calendar.HOUR_OF_DAY);
 		Map<String, String> wokeupMsg = getWokeupMsgMap();
 		Log.d(TAG, "wokeupMsgMap:" + wokeupMsg);
-		String tags = wokeupMsg.get(getText(R.string.WOKEUP_TAG_KEY)
+		String msgs = wokeupMsg.get(getText(R.string.WOKEUP_MSG_KEY)
 				.toString());
-		if (tags != null && tags.contains("%d")) {
-			tags = String.format(tags, hour);
+		try {
+			msgs = String.format(msgs, calendar);
+		} catch (Exception e) {
+			Log.w(TAG, e.fillInStackTrace());
+			msgs = getText(R.string.CannotConvertMsg) + ":"
+					+ e.getMessage();
 		}
-		String content = recv
-				+ wokeupMsg.get(getText(R.string.WOKEUP_MSG_KEY)
-						.toString()) + " " + tags;
+		String content = recv + msgs;
 
 		return content;
+	}
+
+	private String normalizeMsgs(final String msgs) {
+		if (msgs.indexOf("%") == msgs.lastIndexOf("%")) {
+			return msgs;
+		}
+		int firstIndex = msgs.indexOf("%");
+		String manyPctStr = msgs.substring(firstIndex + 1);
+		String nonePctStr = manyPctStr.replace("%", "");
+
+		return msgs.substring(0, firstIndex + 1) + nonePctStr;
 	}
 
 	private Map<String, String> getWokeupMsgMap() {
@@ -74,8 +85,6 @@ public class WokeUpTwitActivity extends Activity {
 
 		DEFAULT_MSGS.put(getText(R.string.WOKEUP_MSG_KEY).toString(),
 				getText(R.string.WokeUpMsg).toString());
-		DEFAULT_MSGS.put(getText(R.string.WOKEUP_TAG_KEY).toString(),
-				getText(R.string.WokeUpTags).toString());
 		if (pref == null) {
 			Log.d(TAG, "pref is null.");
 			return DEFAULT_MSGS;
@@ -86,12 +95,6 @@ public class WokeUpTwitActivity extends Activity {
 						.toString(),
 						DEFAULT_MSGS.get(getText(
 								R.string.WOKEUP_MSG_KEY)
-								.toString())));
-		retMap.put(getText(R.string.WOKEUP_TAG_KEY).toString(),
-				pref.getString(getText(R.string.WOKEUP_TAG_KEY)
-						.toString(),
-						DEFAULT_MSGS.get(getText(
-								R.string.WOKEUP_TAG_KEY)
 								.toString())));
 
 		return retMap;

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World, WokeUpTwitActivity!</string>
-	<string name="app_name">WokeUpTwit</string>
-	<string name="share_msg">select wokeup tweet app</string>
-	<string name="WokeUpTags">#ohayo #%dji</string>
-	<string name="WokeUpMsg">おはようございます。起きました♪</string>
+	<string name="hello">おはツイ</string>
+	<string name="app_name">おはツイ</string>
+	<string name="share_msg">つぶやくアプリを選択してください</string>
+	<string name="WokeUpMsg" formatted="false">おはようございます。起きました♪ #%tkji #ohayo %1$tTなう</string>
+	<string name="PrefTitle">設定</string>
+	<string name="EditMsgTitle">ツイートフォーマット</string>
+	<string name="EditMsgSummary">おはツイに使用するメッセージを設定</string>
+	<string name="ResetSettingTitle">設定をリセット</string>
+	<string name="ResetSettingSummary">おはツイ設定をリセットできます</string>
+	<string name="ResetMsg">設定をリセットしました</string>
+	<string name="CannotConvertMsg">メッセージ変換できませんでした。おはツイフォーマット設定を見直してください</string>
+
 </resources>

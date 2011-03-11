@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/PrefTitle">
-        <EditTextPreference android:title="@string/EditMsgTitle" android:key="@string/WOKEUP_MSG_KEY" android:defaultValue="@string/WokeUpMsg"></EditTextPreference>
-        <EditTextPreference android:title="@string/EditTagTitle" android:key="@string/WOKEUP_TAG_KEY" android:defaultValue="@string/WokeUpTags"></EditTextPreference>
-    </PreferenceCategory>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="@string/PrefTitle">
+		<EditTextPreference android:title="@string/EditMsgTitle"
+			android:key="@string/WOKEUP_MSG_KEY" android:defaultValue="@string/WokeUpMsg"
+			android:summary="@string/EditMsgSummary"></EditTextPreference>
+		<org.orzlabs.android.wokeup.preference.WokeUpDialogPreference
+			android:key="@string/RESET_SETTING_KEY" android:title="@string/ResetSettingTitle"
+			android:summary="@string/ResetSettingSummary"></org.orzlabs.android.wokeup.preference.WokeUpDialogPreference>
+	</PreferenceCategory>
 </PreferenceScreen>
