@@ -3,7 +3,7 @@
 	<string name="hello">おはツイ</string>
 	<string name="app_name">おはツイ</string>
 	<string name="share_msg">つぶやくアプリを選択してください</string>
-	<string name="WokeUpMsg" formatted="false">おはようございます。起きました♪ #%tkji #ohayo %1$tTなう</string>
+	<string name="WokeUpMsg" formatted="false">おはようございます。起きました♪ #%tkji #ohayo</string>
 	<string name="PrefTitle">設定</string>
 	<string name="EditMsgTitle">ツイートフォーマット</string>
 	<string name="EditMsgSummary">おはツイに使用するメッセージを設定</string>
