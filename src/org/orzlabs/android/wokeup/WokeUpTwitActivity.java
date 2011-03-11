@@ -68,17 +68,6 @@ public class WokeUpTwitActivity extends Activity {
 		return content;
 	}
 
-	private String normalizeMsgs(final String msgs) {
-		if (msgs.indexOf("%") == msgs.lastIndexOf("%")) {
-			return msgs;
-		}
-		int firstIndex = msgs.indexOf("%");
-		String manyPctStr = msgs.substring(firstIndex + 1);
-		String nonePctStr = manyPctStr.replace("%", "");
-
-		return msgs.substring(0, firstIndex + 1) + nonePctStr;
-	}
-
 	private Map<String, String> getWokeupMsgMap() {
 		SharedPreferences pref = PreferenceManager
 				.getDefaultSharedPreferences(this);
