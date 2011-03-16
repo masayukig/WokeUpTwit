@@ -7,17 +7,26 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.util.Linkify;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class WokeUpTwitActivity extends Activity implements
@@ -27,10 +36,19 @@ public class WokeUpTwitActivity extends Activity implements
 	private ListView listView;
 	private List<String> contents;
 
+	private static final int SETTING_ITEM = 0;
+	private static final int INFO_ITEM = 1;
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
 
 		setContentView(R.layout.main);
 
@@ -57,11 +75,6 @@ public class WokeUpTwitActivity extends Activity implements
 		listView.setAdapter(arrayAdapter);
 		listView.setOnItemSelectedListener(this);
 		listView.setOnItemClickListener(this);
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
 	}
 
 	private List<String> getWokeupContent(final String recv) {
@@ -170,5 +183,69 @@ public class WokeUpTwitActivity extends Activity implements
 		}
 
 		finish();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		MenuItem itemQuit = menu.add(0, SETTING_ITEM, 0, "Setting");
+		itemQuit.setIcon(android.R.drawable.ic_menu_manage);
+		MenuItem itemInfo = menu.add(0, INFO_ITEM, 1, "Info");
+		itemInfo.setIcon(android.R.drawable.ic_menu_info_details);
+		return true;
+	}
+
+	public String getVersionNumber() {
+		String versionName = "";
+		PackageManager pm = this.getPackageManager();
+		try {
+			PackageInfo info = pm.getPackageInfo(
+					this.getPackageName(),
+					PackageManager.GET_META_DATA);
+			versionName += info.versionName;
+		} catch (NameNotFoundException e) {
+			versionName += "0";
+		}
+		return versionName;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
+
+		switch (item.getItemId()) {
+		case INFO_ITEM:
+			TextView tv = new TextView(this);
+			tv.setAutoLinkMask(Linkify.WEB_URLS);
+			tv.setText("WokeUpTwit\n\n"
+					+ getText(R.string.InfoMessage)
+					+ getVersionNumber()
+					+ "\n"
+					+ "http://blog.orzlabs.org/search/label/wokeuptwit");
+			AlertDialog.Builder ad = new AlertDialog.Builder(this);
+			ad.setTitle(R.string.InfoTitle);
+			ad.setIcon(android.R.drawable.ic_menu_info_details);
+			ad.setPositiveButton("OK",
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(
+								DialogInterface dialog,
+								int which) {
+
+						}
+					});
+			ad.setView(tv);
+			ad.create();
+			ad.show();
+			break;
+		case SETTING_ITEM:
+			Intent intent = new Intent(this, SettingActivity.class);
+			startActivity(intent);
+			break;
+		default:
+			// Do nothing. ignore.
+			Log.d(TAG, "item id :" + item.getItemId());
+		}
+		return true;
 	}
 }

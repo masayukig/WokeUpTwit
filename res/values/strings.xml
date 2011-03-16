@@ -15,5 +15,7 @@
 	<string name="ResetSettingSummary">Reset the settings if you want</string>
 	<string name="ResetMsg">Reset the settings</string>
 	<string name="CannotConvertMsg">Cannot convert your message. Please correct your message format</string>
+	<string name="InfoMessage">Version:</string>
+	<string name="InfoTitle">Information</string>
 
 </resources>
