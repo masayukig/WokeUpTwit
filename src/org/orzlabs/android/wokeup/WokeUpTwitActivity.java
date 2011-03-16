@@ -31,13 +31,11 @@ public class WokeUpTwitActivity extends Activity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// 自動生成されたR.javaの定数を指定してXMLからレイアウトを生成
+
 		setContentView(R.layout.main);
 
-		// XMLで定義したandroid:idの値を指定してListViewを取得します。
 		listView = (ListView) findViewById(R.id.list);
 
-		// ListViewに表示する要素を保持するアダプタを生成します。
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
 				this, android.R.layout.simple_list_item_1);
 
@@ -48,21 +46,7 @@ public class WokeUpTwitActivity extends Activity implements
 			String recv = intent.getStringExtra(Intent.EXTRA_TEXT);
 			contents = getWokeupContent(recv);
 		} else {
-			Intent sendIntent = new Intent(
-					android.content.Intent.ACTION_SEND);
-			// Intent intent = new Intent(Intent.ACTION_VIEW,
-			// Uri.parse("http://twitter.com"));
-			sendIntent.setType("text/plain");
 			contents = getWokeupContent("");
-			// intent.putExtra(Intent.EXTRA_TEXT, content);
-			try {
-				startActivity(Intent.createChooser(sendIntent,
-						getString(R.string.share_msg)));
-				// startActivity(intent);
-			} catch (android.content.ActivityNotFoundException ex) {
-				Toast.makeText(this, "client not found",
-						Toast.LENGTH_LONG).show();
-			}
 		}
 		// 要素を追加
 		for (String content : contents) {
@@ -162,12 +146,29 @@ public class WokeUpTwitActivity extends Activity implements
 		Log.d(TAG, "onItemClick():position:" + position + ", id:" + id);
 
 		Intent intent = getIntent();
-
 		intent.putExtra(Intent.EXTRA_TEXT, contents.get(position));
-
 		setResult(RESULT_OK, intent);
 
-		finish();
+		if (!"jp.r246.twicca.ACTION_EDIT_TWEET".equals(intent
+				.getAction())) {
+			try {
+				Intent sendIntent = new Intent(
+						android.content.Intent.ACTION_SEND);
+				// Intent intent = new
+				// Intent(Intent.ACTION_VIEW,
+				// Uri.parse("http://twitter.com"));
+				sendIntent.setType("text/plain");
+				sendIntent.putExtra(Intent.EXTRA_TEXT,
+						contents.get(position));
 
+				startActivity(Intent.createChooser(sendIntent,
+						getString(R.string.share_msg)));
+			} catch (android.content.ActivityNotFoundException ex) {
+				Toast.makeText(this, "client not found",
+						Toast.LENGTH_LONG).show();
+			}
+		}
+
+		finish();
 	}
 }
