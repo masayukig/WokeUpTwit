@@ -4,8 +4,18 @@
 		<EditTextPreference android:title="@string/EditMsgTitle"
 			android:key="@string/WOKEUP_MSG_KEY" android:defaultValue="@string/WokeUpMsg"
 			android:summary="@string/EditMsgSummary"></EditTextPreference>
+		<EditTextPreference android:title="@string/EditMsgTitle2"
+			android:key="@string/WOKEUP_MSG_KEY2" android:defaultValue="@string/WokeUpMsg2"
+			android:summary="@string/EditMsgSummary"></EditTextPreference>
+		<EditTextPreference android:title="@string/EditMsgTitle3"
+			android:key="@string/WOKEUP_MSG_KEY3" android:defaultValue="@string/WokeUpMsg3"
+			android:summary="@string/EditMsgSummary"></EditTextPreference>
 		<org.orzlabs.android.wokeup.preference.WokeUpDialogPreference
 			android:key="@string/RESET_SETTING_KEY" android:title="@string/ResetSettingTitle"
-			android:summary="@string/ResetSettingSummary"></org.orzlabs.android.wokeup.preference.WokeUpDialogPreference>
+			android:summary="@string/ResetSettingSummary">
+		</org.orzlabs.android.wokeup.preference.WokeUpDialogPreference>
+	</PreferenceCategory>
+	<PreferenceCategory android:title="Ads">
+		<Preference android:selectable="false" android:layout="@layout/admob_preference" />
 	</PreferenceCategory>
 </PreferenceScreen>

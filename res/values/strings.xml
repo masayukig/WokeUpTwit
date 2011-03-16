@@ -3,13 +3,17 @@
 	<string name="hello">WokeUpTwit</string>
 	<string name="app_name">WokeUpTwit</string>
 	<string name="share_msg">select woke up tweet app</string>
-	<string name="WokeUpMsg">Just #wokeup</string>
+	<string name="WokeUpMsg">Just #wokeup :) at %tT</string>
+	<string name="WokeUpMsg2">#GN #GoodNight :D</string>
+	<string name="WokeUpMsg3"></string>
 	<string name="PrefTitle">Settings</string>
-	<string name="EditMsgTitle">Tweet message format</string>
-	<string name="EditMsgSummary">summary</string>
+	<string name="EditMsgTitle">Tweet message format-1</string>
+	<string name="EditMsgTitle2">Tweet message format-2</string>
+	<string name="EditMsgTitle3">Tweet message format-3</string>
+	<string name="EditMsgSummary">Set the Tweet message format</string>
 	<string name="ResetSettingTitle">Reset the settings</string>
 	<string name="ResetSettingSummary">Reset the settings if you want</string>
 	<string name="ResetMsg">Reset the settings</string>
 	<string name="CannotConvertMsg">Cannot convert your message. Please correct your message format</string>
-	
+
 </resources>
