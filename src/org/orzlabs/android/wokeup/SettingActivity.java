@@ -6,6 +6,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.util.Log;
 
+import com.admob.android.ads.AdManager;
+
 public class SettingActivity extends PreferenceActivity {
 	private static final String TAG = "SettingActivity";
 
@@ -13,6 +15,9 @@ public class SettingActivity extends PreferenceActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.prefsc);
+		AdManager.setTestDevices(new String[] {
+				AdManager.TEST_EMULATOR,
+				"E244A5008A71EEDD5220535459231F8D", });
 	}
 
 	@Override

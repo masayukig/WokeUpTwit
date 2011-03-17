@@ -43,7 +43,6 @@ public class WokeUpTwitActivity extends Activity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 	}
 
 	@Override
@@ -60,7 +59,6 @@ public class WokeUpTwitActivity extends Activity implements
 		Intent intent = getIntent();
 		if ("jp.r246.twicca.ACTION_EDIT_TWEET".equals(intent
 				.getAction())) {
-
 			String recv = intent.getStringExtra(Intent.EXTRA_TEXT);
 			contents = getWokeupContent(recv);
 		} else {
@@ -86,8 +84,6 @@ public class WokeUpTwitActivity extends Activity implements
 				.toString()));
 		msgs.add(wokeupMsg.get(getText(R.string.WOKEUP_MSG_KEY2)
 				.toString()));
-		msgs.add(wokeupMsg.get(getText(R.string.WOKEUP_MSG_KEY3)
-				.toString()));
 		ArrayList<String> contents = new ArrayList<String>();
 		for (String msg : msgs) {
 			try {
@@ -110,9 +106,7 @@ public class WokeUpTwitActivity extends Activity implements
 		DEFAULT_MSGS.put(getText(R.string.WOKEUP_MSG_KEY).toString(),
 				getText(R.string.WokeUpMsg).toString());
 		DEFAULT_MSGS.put(getText(R.string.WOKEUP_MSG_KEY2).toString(),
-				getText(R.string.WokeUpMsg2).toString());
-		DEFAULT_MSGS.put(getText(R.string.WOKEUP_MSG_KEY3).toString(),
-				getText(R.string.WokeUpMsg3).toString());
+				getText(R.string.GoodNightMsg).toString());
 		if (pref == null) {
 			Log.d(TAG, "pref is null.");
 			return DEFAULT_MSGS;
@@ -130,12 +124,7 @@ public class WokeUpTwitActivity extends Activity implements
 						DEFAULT_MSGS.get(getText(
 								R.string.WOKEUP_MSG_KEY2)
 								.toString())));
-		retMap.put(getText(R.string.WOKEUP_MSG_KEY3).toString(),
-				pref.getString(getText(R.string.WOKEUP_MSG_KEY3)
-						.toString(),
-						DEFAULT_MSGS.get(getText(
-								R.string.WOKEUP_MSG_KEY3)
-								.toString())));
+
 		return retMap;
 	}
 
@@ -189,7 +178,7 @@ public class WokeUpTwitActivity extends Activity implements
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		MenuItem itemQuit = menu.add(0, SETTING_ITEM, 0, "Setting");
-		itemQuit.setIcon(android.R.drawable.ic_menu_manage);
+		itemQuit.setIcon(android.R.drawable.ic_menu_preferences);
 		MenuItem itemInfo = menu.add(0, INFO_ITEM, 1, "Info");
 		itemInfo.setIcon(android.R.drawable.ic_menu_info_details);
 		return true;

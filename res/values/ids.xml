@@ -2,6 +2,5 @@
 <resources>
 	<string name="WOKEUP_MSG_KEY">WOKEUP_MSG_KEY</string>
 	<string name="WOKEUP_MSG_KEY2">WOKEUP_MSG_KEY2</string>
-	<string name="WOKEUP_MSG_KEY3">WOKEUP_MSG_KEY3</string>
 	<string name="RESET_SETTING_KEY">RESET_SETTING_KEY</string>
 </resources>

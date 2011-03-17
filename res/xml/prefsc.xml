@@ -5,11 +5,8 @@
 			android:key="@string/WOKEUP_MSG_KEY" android:defaultValue="@string/WokeUpMsg"
 			android:summary="@string/EditMsgSummary"></EditTextPreference>
 		<EditTextPreference android:title="@string/EditMsgTitle2"
-			android:key="@string/WOKEUP_MSG_KEY2" android:defaultValue="@string/WokeUpMsg2"
-			android:summary="@string/EditMsgSummary"></EditTextPreference>
-		<EditTextPreference android:title="@string/EditMsgTitle3"
-			android:key="@string/WOKEUP_MSG_KEY3" android:defaultValue="@string/WokeUpMsg3"
-			android:summary="@string/EditMsgSummary"></EditTextPreference>
+			android:key="@string/WOKEUP_MSG_KEY2" android:defaultValue="@string/GoodNightMsg"
+			android:summary="@string/EditMsgSummary2"></EditTextPreference>
 		<org.orzlabs.android.wokeup.preference.WokeUpDialogPreference
 			android:key="@string/RESET_SETTING_KEY" android:title="@string/ResetSettingTitle"
 			android:summary="@string/ResetSettingSummary">
